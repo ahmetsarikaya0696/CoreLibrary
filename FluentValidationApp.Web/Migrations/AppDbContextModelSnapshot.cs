@@ -46,7 +46,7 @@ namespace FluentValidationApp.Web.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("FluentValidationApp.Web.Models.Customer", b =>
@@ -74,7 +74,7 @@ namespace FluentValidationApp.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("FluentValidationApp.Web.Models.Address", b =>

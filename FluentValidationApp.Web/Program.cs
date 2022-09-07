@@ -24,6 +24,9 @@ var connectionString = builder.Configuration.GetConnectionString("FluentValidati
 // AddDbContext
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
+// AutoMapper
+builder.Services.AddAutoMapper(typeof(Program));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

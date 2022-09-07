@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FluentValidationApp.Web.Models;
 using FluentValidation;
+using AutoMapper;
+using FluentValidationApp.Web.DTOs;
 
 namespace FluentValidationApp.Web.Controllers
 {
@@ -16,18 +18,43 @@ namespace FluentValidationApp.Web.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IValidator<Customer> _customerValidator;
+        private readonly IMapper _mapper;
 
-        public CustomersApiController(AppDbContext context, IValidator<Customer> customerValidator)
+        public CustomersApiController(AppDbContext context, IValidator<Customer> customerValidator, IMapper mapper)
         {
             _context = context;
             _customerValidator = customerValidator;
+            _mapper = mapper;
+        }
+
+        // GET: api/CustomersApi/MappingOrnek
+        [Route("MappingOrnek")]
+        [HttpGet]
+        public IActionResult MappingOrnek()
+        {
+            var customer = new Customer
+            {
+                Id = 1,
+                Name = "Ahmet",
+                Email = "ahmet@gmail.com",
+                Age = 26,
+                CreditCard = new CreditCard
+                {
+                    Number = "123456",
+                    ValidDate = DateTime.Now.AddYears(1)
+                }
+            };
+            var customerDto = _mapper.Map<CustomerDto>(customer);
+            return Ok(customerDto);
         }
 
         // GET: api/CustomersApi
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
+        public async Task<ActionResult<List<CustomerDto>>> GetCustomers()
         {
-            return await _context.Customers.ToListAsync();
+            var customers = await _context.Customers.ToListAsync();
+            var customerDtos = _mapper.Map<List<CustomerDto>>(customers);
+            return customerDtos;
         }
 
         // GET: api/CustomersApi/5
@@ -87,7 +114,7 @@ namespace FluentValidationApp.Web.Controllers
         {
             var result = await _customerValidator.ValidateAsync(customer);
 
-            if (!result.IsValid) 
+            if (!result.IsValid)
                 return BadRequest(result.Errors.Select(x => new { property = x.PropertyName, error = x.ErrorMessage }));
 
             _context.Customers.Add(customer);

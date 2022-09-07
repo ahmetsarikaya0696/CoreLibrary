@@ -9,7 +9,9 @@
         public DateTime? Birthday { get; set; }
         public Gender Gender { get; set; }
 
-        // Navprop
         public virtual IList<Address> Addresses { get; set; }
+        public string GetFullName() => $"Name:{Name}, Email:{Email}, Age:{Age}";
+        //public string FullName2() => $"Name:{Name}, Email:{Email}, Age:{Age}";
+        public CreditCard CreditCard { get; set; }
     }
 }
