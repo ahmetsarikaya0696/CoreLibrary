@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FluentValidation.Validators;
 using FluentValidationApp.Web.Models;
 
 namespace FluentValidationApp.Web.FluentValidators
@@ -26,6 +27,14 @@ namespace FluentValidationApp.Web.FluentValidators
             RuleFor(x => x.Gender)
                 .NotEmpty().WithMessage(notEmptyMessage)
                 .IsInEnum().WithMessage("Erkek=1 Kadın=2"); // Api için gerekli
+
+            RuleFor(x => x.CreditCard.Number)
+                .NotEmpty().WithMessage(notEmptyMessage)
+                .Length(16).WithMessage("Number alanı 16 karakterden oluşmalıdır");
+
+            RuleFor(x => x.CreditCard.ValidDate)
+                .NotEmpty().WithMessage("ValidDate alanı boş olamaz")
+                .GreaterThan(DateTime.Now).WithMessage("ValidDate ileri bir tarih olmalıdır");
 
             RuleForEach(x => x.Addresses).SetValidator(new AddressValidator());
         }

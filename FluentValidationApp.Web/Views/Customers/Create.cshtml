@@ -60,6 +60,16 @@
                 </select>
                 <span asp-validation-for="Gender" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="CreditCard.Number" class="control-label"></label>
+                <input asp-for="CreditCard.Number" class="form-control" />
+                <span asp-validation-for="CreditCard.Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreditCard.ValidDate" class="control-label"></label>
+                <input type="date" asp-for="CreditCard.ValidDate" class="form-control" />
+                <span asp-validation-for="CreditCard.ValidDate" class="text-danger"></span>
+            </div>
             <div class="form-group mt-2">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

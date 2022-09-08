@@ -2,7 +2,11 @@
 {
     public class CreditCard
     {
+        public int Id { get; set; }
         public string Number { get; set; }
         public DateTime ValidDate { get; set; }
+
+        public int CustomerId { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }
