@@ -14,11 +14,17 @@ builder.Services.AddOptions();
 
 builder.Services.AddMemoryCache();
 
-var IpRateLimiting = builder.Configuration.GetSection("IpRateLimiting");
-builder.Services.Configure<IpRateLimitOptions>(IpRateLimiting);
+// IPRateLimiting
+//var IpRateLimiting = builder.Configuration.GetSection("IpRateLimiting");
+//builder.Services.Configure<IpRateLimitOptions>(IpRateLimiting);
+//var IpRateLimitPolicies = builder.Configuration.GetSection("IpRateLimitPolicies");
+//builder.Services.Configure<IpRateLimitPolicies>(IpRateLimitPolicies);
 
-var IpRateLimitPolicies = builder.Configuration.GetSection("IpRateLimitPolicies");
-builder.Services.Configure<IpRateLimitPolicies>(IpRateLimitPolicies);
+// ClientRateLimiting
+var ClientRateLimiting = builder.Configuration.GetSection("ClientRateLimiting");
+builder.Services.Configure<ClientRateLimitOptions>(ClientRateLimiting);
+var ClientRateLimitPolicies = builder.Configuration.GetSection("ClientRateLimitPolicies");
+builder.Services.Configure<ClientRateLimitPolicies>(ClientRateLimitPolicies);
 
 builder.Services.AddInMemoryRateLimiting();
 
@@ -33,8 +39,8 @@ builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>()
 
 var app = builder.Build();
 
-var IpPolicy = app.Services.GetRequiredService<IIpPolicyStore>();
-IpPolicy.SeedAsync().Wait();
+//var IpPolicy = app.Services.GetRequiredService<IIpPolicyStore>();
+//IpPolicy.SeedAsync().Wait();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -43,8 +49,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// RateLimiting için gerekli middleware
-app.UseIpRateLimiting();
+// IpRateLimiting için gerekli middleware
+//app.UseIpRateLimiting();
+
+// ClientRateLimiting için gerekli middleware
+app.UseClientRateLimiting();
 
 app.UseHttpsRedirection();
 
