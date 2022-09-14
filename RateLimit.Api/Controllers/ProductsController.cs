@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace RateLimit.Api.Controllers
 {
@@ -22,7 +21,7 @@ namespace RateLimit.Api.Controllers
         [HttpPost]
         public IActionResult SaveProduct()
         {
-            return Ok(new { Status="Success"});
+            return Ok(new { Status = "Success" });
         }
 
         [HttpPut]

@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentValidationApp.Web", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RateLimit.Api", "RateLimit.Api\RateLimit.Api.csproj", "{6D2C624D-EA4A-438C-8605-11F503E0CA72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmidgeApp.Web", "SmidgeApp.Web\SmidgeApp.Web.csproj", "{0E5E659E-855B-4E2B-9360-CF321806F084}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmidgeApp.Web", "SmidgeApp.Web\SmidgeApp.Web.csproj", "{0E5E659E-855B-4E2B-9360-CF321806F084}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HangfireApp.Web", "HangfireApp.Web\HangfireApp.Web.csproj", "{25721B63-C32C-451A-AC12-D4095084411E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{0E5E659E-855B-4E2B-9360-CF321806F084}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E5E659E-855B-4E2B-9360-CF321806F084}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E5E659E-855B-4E2B-9360-CF321806F084}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25721B63-C32C-451A-AC12-D4095084411E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25721B63-C32C-451A-AC12-D4095084411E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25721B63-C32C-451A-AC12-D4095084411E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25721B63-C32C-451A-AC12-D4095084411E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

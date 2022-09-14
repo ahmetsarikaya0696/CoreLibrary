@@ -1,6 +1,4 @@
-﻿using FluentValidationApp.Web.Models;
-
-namespace FluentValidationApp.Web.DTOs
+﻿namespace FluentValidationApp.Web.DTOs
 {
     public class CustomerDto
     {

@@ -1,0 +1,1 @@
+const carp=(a,b)=>{return a*b;};;

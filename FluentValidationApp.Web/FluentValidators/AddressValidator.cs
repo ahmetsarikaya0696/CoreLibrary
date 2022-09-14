@@ -6,7 +6,7 @@ namespace FluentValidationApp.Web.FluentValidators
     public class AddressValidator : AbstractValidator<Address>
     {
         private string notEmptyMessage = "{PropertyName} alanı boş olamaz";
-        
+
         public AddressValidator()
         {
             RuleFor(x => x.Content)

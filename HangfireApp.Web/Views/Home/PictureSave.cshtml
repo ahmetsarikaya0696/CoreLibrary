@@ -1,0 +1,22 @@
+﻿@model PictureSaveVM
+@{
+    ViewData["Title"] = "PictureSave";
+}
+
+<h1>PictureSave</h1>
+
+<form asp-action="PictureSave" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Image" class="control-label"></label>
+        <div class="custom-file">
+            <input type="file" asp-for="Image" class="custom-file-input" />
+            <label class="custom-file-label" for="customFile">Dosya Seç</label>
+        </div>
+        <span asp-validation-for="Image.Length" class="text-danger"></span>
+        <span asp-validation-for="Image.ContentType" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+    </div>
+</form>
